@@ -55,16 +55,28 @@ LEFT JOIN film_actor
 ON film.film_id = film_actor.film_id
 WHERE film_actor.actor_id IS NULL;
     
-## 5 Se inserta un nuevo actor por medio de la funcion INSERT INTO, se realiza la actualizacion del nombre del actor temporal (DIEGO) con la funcion UPDATE, como se realizaron varias consultas del actor antes de la actualizacion del nombre se crearon varias filas al momento de insertarlo, se elimina el actor temporal buscando el id del actor y con la funcion DELETE se elimina el registro
+## 5 Se inserta un nuevo actor por medio de la funcion INSERT INTO, se realiza la actualizacion del nombre del actor temporal (DIEGO) con la funcion UPDATE, como se realizaron varias consultas del actor antes de la actualizacion del nombre se crearon varias filas al momento de insertarlo, se elimina el actor temporal buscando el id del actor y con la funcion DELETE se elimina el registro, se realizan labores de correcion del codigo limpiando los registros creados no necesarios
 INSERT INTO actor (first_name, last_name)
 VALUES ('Temporal', 'Actor');
 
-UPDATE actor
-SET first_name = 'DIEGO'
+SELECT *
+FROM actor
 WHERE first_name = 'Temporal';
 
+UPDATE actor
+SET first_name = 'DIEGO'
+WHERE actor_id = 218;
+
+SELECT *
+FROM actor
+WHERE actor_id = 218;
+
 DELETE FROM actor
-WHERE actor_id = '213';
+WHERE actor_id = 218;
+
+SELECT *
+FROM actor
+WHERE actor_id = 218;
 
 ## 6 Por medio de la funcion SUM se realiza la suma del dinero gastado en el servicio de renta y con la funcion COUNT se realiza el conteo de las veces que se rento
 SELECT 
